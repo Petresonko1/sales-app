@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  authentication:
+    build:
+      context: ./AuthenticationService
+    ports:
+      - "5000:80"
+    networks:
+      - sales-network
+
+  user:
+    build:
+      context: ./UserService
+    ports:
+      - "5001:80"
+    networks:
+      - sales-network
+
+  product:
+    build:
+      context: ./ProductService
+    ports:
+      - "5002:80"
+    networks:
+      - sales-network
+
+  order:
+    build:
+      context: ./OrderService
+    ports:
+      - "5003:80"
+    networks:
+      - sales-network
+
+  customer:
+    build:
+      context: ./CustomerService
+    ports:
+      - "5004:80"
+    networks:
+      - sales-network
+
+networks:
+  sales-network:
+    driver: bridge
